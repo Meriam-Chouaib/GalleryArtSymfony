@@ -1,0 +1,19 @@
+{% extends 'template.html.twig' %}
+{% block title %}<title> Gallery Art - Add artist</title >{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<div class=" row center-form-art  form-edit-user ">
+
+    <h1 class="title-registration">New artist</h1>
+    
+     {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+         <button type="submit" class=" add-button" > Add </button>
+
+     {{ form_end(form)}}
+     </div>
+</div>
+{% endblock %}

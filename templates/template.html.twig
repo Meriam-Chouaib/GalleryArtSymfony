@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+	
+	{% block title %}{% endblock %}
+    {% block stylesheets %}
+
+    
+    <link rel="shortcut icon" href="{{asset('frontend/img/ico/favicon.ico')}}" >
+    <link rel="apple-touch-icon" sizes="144x144"   href="{{asset('frontend/img/ico/apple-touch-icon-144x144.png')}}" >
+    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('frontend/img/ico/apple-touch-icon-114x114.png')}}" >
+    <link rel="apple-touch-icon" sizes="72x72"  href="{{asset('frontend/img/ico/apple-touch-icon-72x72.png')}}" >
+    <link rel="apple-touch-icon" href="{{asset('frontend/img/ico/apple-touch-icon-57x57.png')}}">
+
+    
+
+    <!-- Bootstrap Core CSS -->
+    <link  href="{{asset('frontend/css/bootstrap.min.css')}}"  rel="stylesheet">
+    <link href="{{asset('frontend/css/animate.css')}}"  rel="stylesheet">
+    <link  href="{{asset('frontend/css/plugins.css')}}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link type="text/css" href="{{asset('frontend/css/style.css')}}"  rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{asset('frontend/font-awesome/css/font-awesome.min.css')}}"  rel="stylesheet" type="text/css">
+    <link href="{{asset('frontend/css/pe-icons.css')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch&display=swap" rel="stylesheet">
+   
+     {% endblock %}
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body id="page-top" class="home index">
+ 	
+	<!-- Fixed navbar -->
+	<div class="master-wrapper">
+
+      
+
+	<nav class="navbar navbar-default navbar-fixed-top side-menu-only fadeInDown" data-wow-delay="0.5s">
+            <div class="top-bar smoothie hidden-xs">
+                <div class="container">
+                    <div class="clearfix">
+                        <ul class="list-inline social-links wow pull-left">
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-behance"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+
+                        <div class="pull-right text-right">
+                            <ul class="list-inline">
+                                <li>
+                                    <div><i class="fa fa-envelope-o"></i> HomeOfArt@art.com</div>
+                                </li>
+                                <li>
+                                    <div class="meta-item"><i class="fa fa-mobile"></i> +216 55 018 605</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand smoothie logo logo-light logo-txt" style="font-size:12px" href="index.html">
+                        Gallery Art
+						
+					</a>
+                    <a class="navbar-brand smoothie text-dark logo logo-txt logo-dark" style="font-size:12px" href="index.html">
+						 Gallery Art
+					</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+            
+                <!-- /.navbar-collapse -->
+				 <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a href="{{ path('Home')}}" >Home</a>
+                           
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ path('ListJob')}}" >Products</span></a>
+                       
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ path('ListCategory')}}" class="dropdown-toggle">Artistes </span></a>
+                         
+                        </li>
+                     
+                        <li class="dropdown">
+                            <a href="{{ path('contactUs')}}" class="dropdown-toggle">Contact us </span></a>
+                           
+                        </li>
+                        
+                            
+                     
+
+                        {% if not app.user %}
+                            <li><a class="btn" href="{{ path('app_login')}}">SIGN IN / SIGN UP</a></li>
+                        {% else %}
+                            <li><a class="btn" href="{{ path('app_logout')}}">Log out</a></li>
+                        {% endif %}
+
+                          {% if is_granted('ROLE_ADMIN') %}
+     					 <li class="dropdown"> <a href="{{ path('users')}}"  class="dropdown-toggle border border-success" > Liste users </a></li>
+    				{% endif %}
+                        <li><a href="#search"><i class="pe-7s-search"></i></a></li>
+                        <li><a href="javascript:void(0);" class="side-menu-trigger hidden-xs"><i class="fa fa-bars"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </nav> 
+	<!-- /.navbar -->
+
+	 <div id="search-wrapper">
+            <button type="button" class="close">×</button>
+            <div class="vertical-center text-center">
+                <form>
+                    <input type="search" value="" placeholder="Enter Search Term" />
+                    <button type="submit" class="btn btn-primary btn-white">Search</button>
+                </form>
+            </div>
+        </div>
+{% include 'header1.html.twig' %}
+  
+	
+ {% block body %}{% endblock %}
+
+	<section class="dark-wrapper dark-grey-opaqued opaqued parallax" data-parallax="scroll" data-image-src="{{asset('frontend/img/bg/bg2.jpg')}}" data-speed="0.7">
+           <!--artistic painting-->
+            <div class="section-inner">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.2s">
+                            <div class="icon-box-1 match-height mb30">
+                               <img src="{{asset('frontend/img/ico/icon-palette.png')}}" class="icon-palette" >
+                                <div class="content-area">
+                                
+                                    <h3 class="title">Artistic painting</h3>
+                                    <div class="content">Painting, the expression of ideas and emotions, with the creation of certain aesthetic qualities, in a two-dimensional visual language. The elements of this language—its shapes, lines, colours, tones, and textures—are used in various ways to produce sensations of volume, space, movement, and light on a flat surface.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.2s">
+                            <div class="icon-box-1 match-height mb30">
+                              <img src="{{asset('frontend/img/ico/icon-palette.png')}}" class="icon-palette" >
+                                <div class="content-area">
+                                    <h3 class="title">the artists</h3>
+                                    <div class="content">Artists work to illuminate the margins and make societal changes. 
+                                    Rather than the word "role", I prefer "commitment". Over many years as an arts educator,
+                                     I have helped people and communities find their voices and express their concerns through individual and collaborative art projects.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeIn " data-wow-delay="0.2s">
+                            <div class="icon-box-1 match-height mb30">
+                            <img src="{{asset('frontend/img/ico/icon-palette.png')}}" class="icon-palette" >
+                                <div class="content-area pe-2">
+                                    <h3 class="title">The real art</h3>
+                                    <div class="content">Art makes people optimistic about their future.
+                                    <span class="d-block"> Art can be used to help spread a message of inspiration,</span>  making people achieve greatthings in life. Art can be a form of communication between people, to focus on common issues for the betterment of humankind. Inspirational music is the best form of creative art.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--pictures of artists-->
+		<section class="white-bg">
+            <div class="section-inner nopadding-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9 match-height">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <ul class="owl-carousel-paged testimonial-owl wow fadeIn list-unstyled" data-items="3" data-items-tablet="[768,2]" data-items-mobile="[479,1]">
+                                        <li>
+                                            <div class="row hover-item">
+                                                <div class="col-xs-12">
+                                                    <img src="{{asset('frontend/img/team/1.jpg')}}" class="img-responsive smoothie" alt="">
+                                                </div>
+                                                <div class="col-xs-12 hover-item-caption smoothie">
+                                                    <div class="vertical-center">
+                                                        <h3 class="smoothie"><a href="single-portfolio.html" title="view project">John Doe</a></h3>
+                                                        <ul class="smoothie list-inline social-links wow">
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-behance"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row hover-item">
+                                                <div class="col-xs-12">
+                                                    <img src="{{asset('frontend/img/team/2.jpg')}}"  class="img-responsive smoothie" alt="">
+                                                </div>
+                                                <div class="col-xs-12 hover-item-caption smoothie">
+                                                    <div class="vertical-center">
+                                                        <h3 class="smoothie"><a href="single-portfolio.html" title="view project">Barry Scott</a></h3>
+                                                        <ul class="smoothie list-inline social-links wow">
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-behance"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row hover-item">
+                                                <div class="col-xs-12">
+                                                    <img src="{{asset('frontend/img/team/3.jpg')}}" class="img-responsive smoothie" alt="">
+                                                </div>
+                                                <div class="col-xs-12 hover-item-caption smoothie">
+                                                    <div class="vertical-center">
+                                                        <h3 class="smoothie"><a href="single-portfolio.html" title="view project">Tom Smooth</a></h3>
+                                                        <ul class="smoothie list-inline social-links wow">
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-behance"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row hover-item">
+                                                <div class="col-xs-12">
+                                                    <img src="{{asset('frontend/img/team/4.jpg')}}" class="img-responsive smoothie" alt="">
+                                                </div>
+                                                <div class="col-xs-12 hover-item-caption smoothie">
+                                                    <div class="vertical-center">
+                                                        <h3 class="smoothie"><a href="single-portfolio.html" title="view project">Harvey Wallace</a></h3>
+                                                        <ul class="smoothie list-inline social-links wow">
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-behance"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 match-height">
+                            <div class="vertical-center">
+                                <h2 class="section-heading">Artists</h2>
+                                <h3 class="section-subheading secondary-font">share their creations.</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+	<!-- Social links. @TODO: replace by link/instructions in template -->
+	<section id="social">
+		<div class="container">
+			<div class="wrapper clearfix">
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style">
+				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+				<a class="addthis_button_tweet"></a>
+				<a class="addthis_button_linkedin_counter"></a>
+				<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+				</div>
+				<!-- AddThis Button END -->
+			</div>
+		</div>
+	</section>
+	<!-- /social links -->
+
+
+	<footer id="footer" class="top-space">
+
+<!--Contact and follow me -->
+		<div class="footer1">
+			<div class="container">
+				<div class="row row-footer1">
+					
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Contact</h3>
+						<div class="widget-body">
+							<p>+234 23 9873237<br>
+								<a href="mailto:#">HomeOfArt@art.com</a><br>
+								
+									5036 Monastir, Tunisie (Rue d'environnement)
+							</p>	
+						</div>
+					</div>
+
+					<div class="col-md-3 widget">
+						<h3 class="widget-title">Follow me</h3>
+						<div class="widget-body">
+							<p class="follow-me-icons">
+								<a href="" class="link-social-media"><i class="fa fa-twitter fa-2"></i></a>
+								<a href="" class="link-social-media"><i class="fa fa-dribbble fa-2"></i></a>
+								<a href="" class="link-social-media"><i class="fa fa-github fa-2"></i></a>
+								<a href="" class="link-social-media"><i class="fa fa-facebook fa-2"></i></a>
+							</p>	
+						</div>
+					</div>
+
+					<div class="col-md-6 widget">
+						<h3 class="widget-title text-center">History</h3>
+						<div class="widget-body">
+							<p>Artists work to illuminate the margins and make societal changes. Rather than the word "role", I prefer "commitment". Over many years as an arts educator, I have helped people and communities find their voices and express their concerns through individual and collaborative art projects.</p>
+							
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+                </br>
+			</div>
+		</div>
+
+	
+
+	</footer>	
+    <!--global art-->
+	<footer class="white-wrapper">
+        <div id="footer-wrapper">
+                <section class="dark-wrapper">
+                    <div class="section-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="widget about-us-widget">
+                                        <h4 class="widget-title"><strong>Global</strong> ART</h4>
+                                        <p>Visual art, a visual object or experience consciously created through an expression of skill or imagination. The term art encompasses diverse media such as painting, sculpture, printmaking, drawing, decorative arts, photography, and installation.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="widget">
+                                        <h4 class="widget-title"><strong>Latest</strong> Articles</h4>
+                                        <div>
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="widget-img img-product-latest" src="{{asset('frontend/img/produits/tableaufleurs2.jpg')}}" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-heading"><a href="#">Artist Meriam</a></span>
+                                                    <small class="muted">Posted 11 December 2021</small>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <div class="pull-left">
+                                                    <img class="widget-img img-product-latest" src="{{asset('frontend/img/produits/newprod.jpg')}}" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <span class="media-heading"><a href="#">Artist Khaled</a></span>
+                                                    <small class="muted">Posted 05 December 2021</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="widget">
+                                        <h4 class="widget-title">Popular Tags</h4>
+                                        <div class="tagcloud">
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">oeuvre</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">art</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Painting</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Photogtraphy</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">colors</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Fashion</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">News</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Flowers</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">womens</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Importance</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">fun</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">love</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="white-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <ul class="list-inline social-links wow">
+                                    <li>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-behance"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <hr class="thin-hr" />
+                              <div class="footer2">
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-6 widget">
+						<div class="widget-body text-center">
+							<p class="simplenav">
+								<a href="{{ path('Home')}}">Home</a> | 
+								<a href="{{ path('ListJob')}}">Products</a> |
+								<a href="{{ path('ListCategory')}}">Artists</a> |
+								<a href="{{ path('contactUs')}}">Contact Us</a> |
+								<b><a href="{{ path('app_login')}}">Sign up / Sign in</a></b>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 widget">
+						<div class="widget-body">
+							<p class="text-center">
+								Copyright &copy; 2022, Gallery Art. Designed by <a href="#" rel="designer">Chouaib Meriam</a> 
+							</p>
+						</div>
+					</div>
+
+				</div> <!-- /row of widgets -->
+			</div>
+                        </div>
+                    </div>
+                </footer>
+                </div>
+
+        </div>
+
+      
+
+        <div class="flexpanel">
+            <div class="viewport-wrap">
+                <div class="viewport">
+                    <div class="widget mb50">
+                        <h4 class="widget-title">Latest Articles</h4>
+                        <div>
+                            <div class="media">
+                              
+                                <div class="media-body">
+                                    <span class="media-heading"><a href="{{ path('Home')}}">home</a></span>
+                                   
+                                </div>
+                            </div>
+                            <div class="media">
+                               
+                                <div class="media-body">
+                                    <span class="media-heading"><a href="{{ path('ListJob')}}">Products</a></span>
+                                
+                                </div>
+                            </div>
+                            <div class="media">
+                            
+                                <div class="media-body">
+                                    <span class="media-heading"><a href="{{ path('ListCategory')}}">Artists</a></span>
+                                  
+                                </div>
+                            </div>
+                            <div class="media">
+                           
+                                <div class="media-body">
+                                    <span class="media-heading"><a href="{{ path('contactUs')}}" >Contact Us</a></span>
+                                   
+                                </div>
+                            </div>
+                            <div class="media">
+                             
+                                <div class="media-body">
+
+                                   {% if not app.user %}
+                            <span class="media-heading"><a href="{{ path('app_login')}}">Sign In/Sign Up</a></span>
+                        {% else %}
+                        <span class="media-heading"><a href="{{ path('app_logout')}}">Log out</a></span>
+                          
+                        {% endif %}
+                                    
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- -->
+
+                    
+
+                    <div class="widget mb50">
+                        <h4 class="widget-title"><strong>Latest</strong> Articles</h4>
+                        <div class="tagcloud">
+
+                                                      <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">oeuvre</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">art</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Painting</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Photogtraphy</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">colors</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Fashion</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">News</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Flowers</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">womens</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">Importance</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">fun</a>
+                                            <a href="#" class="tag-link btn btn-theme btn-white btn-xs smoothie" title="3 topics">love</a>
+
+                        </div>
+                    </div>
+                    <div class="widget about-us-widget mb50">
+                        <h4 class="widget-title">About  Gallery Art</h4>
+                        <p>“ At Gallery Art, we make it our mission to help you discover and buy from the best emerging artists around the world. Whether you’re looking to discover a new artist, add a statement piece to your home, or commemorate an important life event, Saatchi Art is your portal to thousands of original works by today’s top artists. ”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+		</div>
+    </footer>
+		
+
+
+
+
+        {% block javascripts %}
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+	<!--
+<script src="{{asset('frontend/js/jquery.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+			<script src="{{asset('frontend/js/plugins.js')}}" ></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="assets/js/headroom.min.js"></script>
+	<script src="assets/js/jQuery.headroom.min.js"></script>
+	<script src="assets/js/template.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false" ></script>
+	<script src="{{asset('frontend/js/init.js')}}" ></script>-->
+	
+	<script src="{{asset('frontend/js/jquery.js')}}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+			<script src="{{asset('frontend/js/plugins.js')}}" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false" ></script>
+		<script src="{{asset('frontend/js/init.js')}}" ></script>
+
+	
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+			'use strict';
+			jQuery('#headerwrap').backstretch([
+				"{{asset('frontend/img/bg/bg-header3.jpg')}}",
+                    "{{asset('frontend/img/bg/bg2.jpg')}}",
+                      "{{asset('frontend/img/bg/bg-header.jpg')}}",
+                        "{{asset('frontend/img/bg/bg-header1.jpg')}}",
+                    "{{asset('frontend/img/bg/bg-header4.jpg')}}",
+                    "{{asset('frontend/img/bg/bg7.jpg')}}"
+             
+			], {
+				duration: 5000,
+				fade: 500
+			});
+		});
+		</script>
+</body>
+ {% endblock %}
+</html>

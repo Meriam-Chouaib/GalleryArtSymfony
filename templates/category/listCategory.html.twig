@@ -1,0 +1,79 @@
+{% extends 'template.html.twig' %}
+{% block title %}<title>Gallery Art - List of artists</title>{% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{{asset('css/listJob.css')}}">
+	
+        <section class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="{{asset('frontend/img/bg/bg2.jpg')}}" data-speed="0.7">
+            <div class="section-inner pad-top-200">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 mt30 wow text-center">
+                            <h2 class="section-heading">List of Artists</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="white-bg">
+            <div class="section-inner">
+                <div class="container">
+                    <div class="row">
+                    
+                        <div class="col-md-12 text-center mb50">
+                            <ul class="portfolio-filter mb30 list-inline wow">
+                                <li><a class="btn btn-primary active" href="#" data-filter="*">All</a></li>
+                            
+                               
+                                <li><a class="btn btn-primary" href="#" data-filter=".design">painting</a></li>
+                                <li><a class="btn btn-primary" href="#" data-filter=".photography">ceramic</a></li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                {% if  is_granted('ROLE_ADMIN') %}           
+                     <a href="{{ path('NewCategory')}}" class="btn add-button btn-add-new-product">add artist</a>
+            {% endif %}
+                  
+                    <p></p>
+                    <div>
+                    
+                        <ul class="portfolio-items nopadding-lr isotope list-unstyled">
+                             {% for c in categories %}
+                            <li class="col-sm-6 col-xs-6 portfolio-item nopadding-lr apps isotope-item hover-item">
+                        
+                                <img  src="{{asset('uploads/')}}{{c.image}}" class="img-responsive smoothie image-artist" alt="">
+                               
+                                <div class="overlay-item-caption smoothie"></div>
+                                <div class="hover-item-caption smoothie">
+                                    <div class="vertical-center smoothie col-md-6 text-center">
+                                    
+                                        <h1 class="smoothie mb30"><a href="single-portfolio-fullscreen.html" title="view project"> {{c.titre}}</h1>
+                                        
+                                           <h3 class="smoothie mb30"><a href="single-portfolio-fullscreen.html" title="view project"> {{c.description}}</h3>
+         
+                                        <a href="{{asset('uploads/')}}{{c.image}}" title="View Gallery" class="btn btn-primary lb-link smoothie">Zoom</a>
+                                         {% if  is_granted('ROLE_ADMIN') %}           
+                                           
+                                            <a href="{{ path('deleteCat',{'id':c.id})}}" class="smoothie btn btn-primary">delete</a>
+                                         {% endif %}
+                                             {% if  is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}   
+                                          <a  href="{{ path('editCat',{'id':c.id})}}" class="smoothie btn btn-primary">edit</a>
+                                            {% endif %}
+                                         
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+
+                       
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+
+{% endblock %}

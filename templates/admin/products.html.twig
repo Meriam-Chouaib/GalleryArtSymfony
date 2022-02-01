@@ -1,0 +1,42 @@
+{% extends 'templateAdmin.html.twig' %}
+
+{% block title %}<title > Gallery Art - List Products </title>{% endblock %}
+
+{% block body %}
+ <table class="table table-style">
+          <thead class="table-thead-style">
+            <tr>
+              <th scope="col" >id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+               <th scope="col">Image</th>
+              <th scope="col"></th>
+            
+            
+            </tr>
+          </thead>
+	
+          <tbody>
+           {% for j in jobs %}
+              <tr>
+          
+                <th scope="row" class="table-thead-style">{{j.id}}</th>
+                <td>{{j.Name}}</td>
+  
+                  <td class="desc-admin">
+                   {{j.Description}}
+                  </td>
+                    <td>
+                 <img src="{{asset('uploads/')}}{{j.image}}" class="img-responsive smoothie image-prod img-prod-admin" alt="">
+                </td>
+                  <td>
+                  <a href="{{ path('editProduct',{'id':j.id})}}" class="btn btn-edit-user ">Edit product</a>
+                   <a href="{{ path('deleteJobAdmin',{'id':j.id})}}" class="btn btn-edit-user remove-btn">Remove product</a>
+                  </td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+    
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}<title>Gallery Art - Sign Up</title>{% endblock %}
+
+{% block body %}
+<div class="form-signin ">
+<h1 class="title-registration">Sign Up </h1>
+    {{ form_start (form) }}
+    <div class="div-input-register">
+            {{ form_row (form.email, {'attr': { 'placeholder': 'Email address...','class': 'input-register'}}) }}
+
+    </div>
+    <div class="div-input-register">
+    {{form_row (form.password, {'label': 'Password','attr':{'placeholder': 'Password..','class': 'input-register'}}) }}
+   </div>
+   <div class="div-input-register">
+        {{form_row (form.confirm_password, {'label': 'Confirm password','attr':{'placeholder': 'Repeat your password please...','class': 'input-register'}}) }}    
+ </div>
+   <div class="div-input-register btn-register">
+     {{ form_row (form.submit, {'attr': { 'class': ' btn btn-warning btn-signup'}}) }}
+     </div>
+<p></p>
+
+
+{{ form_end (form) }}
+</div>
+{% endblock %}

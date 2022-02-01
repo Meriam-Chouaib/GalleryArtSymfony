@@ -1,0 +1,46 @@
+{% extends 'templateAdmin.html.twig' %}
+
+{% block title %}<title > Gallery Art - List Users </title>{% endblock %}
+
+{% block body %}
+ <table class="table table-style">
+          <thead class="table-thead-style">
+            <tr>
+              <th scope="col" >id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col"></th>
+            
+            
+            </tr>
+          </thead>
+	
+          <tbody>
+            {% for user in users %}
+              <tr>
+          
+                <th scope="row" class="table-thead-style">{{user.id}}</th>
+                <td>{{user.email}}</td>
+  
+                  <td>
+                     {% for role in user.roles %}
+                         {% if role == "ROLE_USER" %}
+                            utilisateurs
+                        {% elseif role=="ROLE_EDITOR" %}
+                         Editor
+                         {% elseif role=="ROLE_ADMIN" %}
+                         Admin
+                         {% endif %}
+                          {% endfor %}
+                  </td>
+                  <td>
+                  <a href="{{ path('modifier_utilisateur',{'id':user.id})}}" class="btn btn-edit-user ">Edit user</a>
+                   <a href="{{ path('deleteUser',{'id':user.id})}}" class="btn btn-edit-user remove-btn">Remove user</a>
+                  </td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+    
+
+{% endblock %}

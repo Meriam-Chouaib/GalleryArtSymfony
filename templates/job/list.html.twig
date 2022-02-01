@@ -1,0 +1,64 @@
+{% extends 'template.html.twig' %}
+{% block title %}<title>Gallery Art - List of products</title>{% endblock %}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{{asset('css/listJob.css')}}">
+	  </head>
+ 
+
+	<section>
+		<div class="section-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 mb100 wow">
+						<h2 class="section-heading">Recent Works</h2>
+						<h3 class="section-subheading secondary-font">A small taste of our success.</h3>
+          
+      
+					</div>
+					<div class="col-md-6 text-right">
+						<ul class="portfolio-filter mb30 list-inline wow">
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="col-md-12">
+          <a href="{{ path('newJob')}}" class="btn-add-new-product btn add-button ">Add new product</a>
+					<ul class="portfolio-items nopadding-lr isotope list-unstyled">
+          			{% for j in jobs %}
+                    <li class="col-sm-4 col-xs-12 portfolio-item nopadding-lr apps isotope-item">
+                      <div class="hover-item">
+                        <img src="{{asset('uploads/')}}{{j.image}}" class="img-responsive smoothie image-prod" alt="">
+                        <div class="overlay-item-caption smoothie"></div>
+                        <div class="hover-item-caption smoothie">
+                          <div class="vertical-center smoothie">
+
+                            <h3 class="smoothie mb30">
+                              <a href="{{ path('JobById',{'id':j.id})}}" title="view project">{{j.Name}}</a>
+                            </h3>
+      
+                            <a href="{{asset('uploads/')}}{{j.image}}" title="View Gallery" class="btn btn-primary lb-link smoothie">Zoom</a>
+                            <a  href="{{ path('JobById',{'id':j.id})}}" class="smoothie btn btn-primary">View</a>
+                             {% if is_granted('ROLE_EDITOR') or is_granted('ROLE_ADMIN') %}
+                                <a   href="{{ path('editJob',{'id':j.id})}}"  class=" smoothie btn btn-primary " style="" > Edit </a>
+              
+                                <a href="{{ path('deleteJob',{'id':j.id})}}" class="smoothie  btn btn-primary" style="text-decoration:none;" > Remove </a>
+
+                              {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                                  {% endfor %}
+					
+					
+				
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

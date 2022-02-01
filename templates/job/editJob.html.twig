@@ -1,0 +1,23 @@
+{% extends 'template.html.twig' %}
+{% block title %}<title>Gallery Art - Edit Product</title>{% endblock %}
+
+{% block body %}
+	
+
+<div class="container">
+<div class=" row center-form-art form-edit-user">
+
+    <h1 class="title-registration">Edit Product</h1>
+    
+     {{ form_start(form) }}
+        {{ form_widget(form) }}
+<div class="col-md-12 text-center row-edit-job">
+         <button type="submit" class="add-button btn btn-edit-user mb-4" > Confirm </button>
+         <br>
+                <a href="{{ path('ListCategory')}}" class="btn-edit-user-back-list btn  " > Back to list </a>  
+       
+     {{ form_end(form)}}
+     </div>
+     </div>
+</div>
+{% endblock %}

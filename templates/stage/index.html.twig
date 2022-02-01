@@ -1,0 +1,39 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}<title>Gallery Art - Stage index</title>{% endblock %}
+
+{% block body %}
+    <h1>Stage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stage in stages %}
+            <tr>
+                <td>{{ stage.id }}</td>
+                <td>{{ stage.name }}</td>
+                <td>{{ stage.description }}</td>
+                <td>
+                    <a href="{{ path('stage_show', {'id': stage.id}) }}"  class="btn-warning mt-2 text-white" style="text-decoration:none;padding: 6px 23px; border-radius:20px;box-shadow: 0px 4px 13px #afa15f;">show</a>
+                    <a href="{{ path('stage_edit', {'id': stage.id}) }}"  class="btn-primary mt-2 text-white" style="text-decoration:none;padding: 6px 23px; border-radius:20px;box-shadow: 0px 4px 13px #afa15f;">edit</a>
+                     <a href="{{ path('stage_delete', {'id': stage.id}) }}"  class="btn-danger mt-2 text-white" style="text-decoration:none;padding: 6px 23px; border-radius:20px;box-shadow: 0px 4px 13px #afa15f;">Remove</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('stage_new') }}">Create new</a>
+{% endblock %}

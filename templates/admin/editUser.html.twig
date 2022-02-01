@@ -1,0 +1,25 @@
+{% extends 'templateAdmin.html.twig' %}
+{% block title %}<title>Edit User</title>{% endblock %}
+
+{% block body %}
+	 
+
+    <div class="container">
+    <div class="row center-form-art form-edit-user">
+          
+    <h2 class="text-center">Edit User : </h2> <h4  >  Email : <span class=""> {{user.email}} </span></h4>
+            <h4>Role : <span class="text-warning">{{user.roles[0]}} </span></h4> <!--pour afficher le premier case de tableau roles en peut le traiter que tableau-->
+            {{ form_start(formUser) }}
+                {{ form_widget(formUser) }}
+<div class="col-md-12 text-center">
+         <button type="submit" class="btn btn-edit-user mb-4"> Confirm</button>
+        </br>
+         <a href="{{ path('users')}}" class="btn-edit-user-back-list btn " >Back to list</a>
+</div>
+     {{ form_end(formUser)}}
+    </div>
+    </div>
+
+
+
+{% endblock %}

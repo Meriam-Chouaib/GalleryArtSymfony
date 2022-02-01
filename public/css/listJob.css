@@ -1,0 +1,41 @@
+.btn-new{
+    text-decoration:none;
+    padding: 6px 23px; 
+    border-radius:20px;
+    box-shadow: 0px 4px 13px #afa15f;
+    background-image: linear-gradient(to right, #ddc51e 0%, #d7642c 51%, #babd15c2 100%);
+    color: white;
+}
+.btn-new:hover{
+    text-decoration:none;
+    background-image: linear-gradient(to right, #bdae4e 0%, #d3e24d 51%, #bec04cc2 100%);
+    color:white;
+    cursor: pointer;
+}
+.btn-edit{
+    text-decoration:none;
+    padding: 6px 23px;
+    color: white;
+     border-radius:20px;
+    box-shadow: 0px 4px 13px #afa15f;
+    width: 500px;
+    background-image: linear-gradient(to right, #76421c 0%, #3e2316 51%, #3a1f12 100%);
+    margin-right: 4px;
+   
+}
+.btn-edit:hover{
+    text-decoration:none;
+    background-image: linear-gradient(to right, #76421c 0%, #d7642c 51%, #3a1f12 100%);
+    color:white;
+    cursor: pointer;
+}
+.btn-supp{
+color: #fff;
+background-color: #e5af36;
+border-color: #d5ba36;
+}
+.list{
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+}
